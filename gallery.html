@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - County Cutters</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                    <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181.96 181.96" class="logo-icon">
+        <defs>
+            <style>
+                .cls-1 { fill: #fff; font-family: RextonRegularRegular, 'Rexton Regular'; font-size: 100px; }
+                .cls-2 { fill: #00a651; font-family: RextonRegularRegular, 'Rexton Regular'; font-size: 100px; }
+                .cls-3 { fill: #f9ed32; }
+            </style>
+        </defs>
+        <g>
+            <circle class="cls-3" cx="90.98" cy="90.98" r="90.98"/>
+            <text class="cls-2" transform="translate(40.3 127.6)">C</text>
+            <text class="cls-1" transform="translate(29.46 127.8)">C</text>
+        </g>
+    </svg>
+    <span class="logo-text">County Cutters</span>
+</div>
+
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                    <a href="quote.html" class="nav-link">Quotes</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="reviews.html" class="nav-link">Leave a Review</a>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile">
+                <a href="index.html" class="nav-link-mobile">Home</a>
+                <a href="services.html" class="nav-link-mobile">Services</a>
+                <a href="gallery.html" class="nav-link-mobile active">Gallery</a>
+                <a href="quote.html" class="nav-link-mobile">Quotes</a>
+                <a href="about.html" class="nav-link-mobile">About Us</a>
+                <a href="contact.html" class="nav-link-mobile">Contact</a>
+                <a href="reviews.html" class="nav-link">Leave a Review</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Our Work Gallery</h1>
+                <p class="page-subtitle">See the quality and care we bring to every project</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="section gallery-filter-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="lawns">Lawns</button>
+                <button class="filter-btn" data-filter="hedges">Hedges</button>
+                <button class="filter-btn" data-filter="clearance">Clearance</button>
+                <button class="filter-btn" data-filter="pressure">Pressure Washing</button>
+                <button class="filter-btn" data-filter="strimming">Strimming</button>
+                <button class="filter-btn" data-filter="planting">Planting Beds</button>
+                <button class="filter-btn" data-filter="windows">Window Cleaning</button>
+                <button class="filter-btn" data-filter="cars">Car Cleaning</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="section gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item" data-category="lawns">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🌱</div>
+                        <div class="placeholder-text">Lawn Mowing<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Professional Lawn Care</h3>
+                        <p class="gallery-description">Perfectly manicured lawn with precision cutting and edging</p>
+                        <span class="gallery-tag">Lawn Mowing</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item" data-category="hedges">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">✂️</div>
+                        <div class="placeholder-text">Hedge Trimming<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Formal Hedge Shaping</h3>
+                        <p class="gallery-description">Crisp, geometric hedge trimming for property boundaries</p>
+                        <span class="gallery-tag">Hedge Trimming</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item" data-category="clearance">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🍂</div>
+                        <div class="placeholder-text">Garden Clearance<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Complete Garden Transformation</h3>
+                        <p class="gallery-description">Overgrown garden cleared and prepared for new landscaping</p>
+                        <span class="gallery-tag">Garden Clearance</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item" data-category="pressure">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">💧</div>
+                        <div class="placeholder-text">Pressure Washing<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Driveway Restoration</h3>
+                        <p class="gallery-description">Deep cleaning brings driveway back to original condition</p>
+                        <span class="gallery-tag">Pressure Washing</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item" data-category="lawns">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🌱</div>
+                        <div class="placeholder-text">Lawn Care<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Regular Maintenance</h3>
+                        <p class="gallery-description">Bi-weekly lawn care keeping garden pristine year-round</p>
+                        <span class="gallery-tag">Lawn Mowing</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item" data-category="strimming">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🌾</div>
+                        <div class="placeholder-text">Strimming<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Edge Strimming</h3>
+                        <p class="gallery-description">Professional strimming for hard-to-reach areas and boundaries</p>
+                        <span class="gallery-tag">Strimming</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item" data-category="hedges">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">✂️</div>
+                        <div class="placeholder-text">Hedge Care<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Natural Hedge Styling</h3>
+                        <p class="gallery-description">Organic hedge shaping for a natural, flowing appearance</p>
+                        <span class="gallery-tag">Hedge Trimming</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item" data-category="pressure">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">💧</div>
+                        <div class="placeholder-text">Patio Cleaning<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Patio Revival</h3>
+                        <p class="gallery-description">Moss and algae removal for spotless outdoor entertaining</p>
+                        <span class="gallery-tag">Pressure Washing</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item" data-category="clearance">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🍂</div>
+                        <div class="placeholder-text">Site Clearance<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Seasonal Clearance</h3>
+                        <p class="gallery-description">Autumn leaf removal and garden waste disposal</p>
+                        <span class="gallery-tag">Garden Clearance</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 10 -->
+                <div class="gallery-item" data-category="planting">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🌺</div>
+                        <div class="placeholder-text">Planting Beds<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Beautiful Planting Beds</h3>
+                        <p class="gallery-description">Custom planting scheme with soil preparation and design</p>
+                        <span class="gallery-tag">Planting Beds</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 11 -->
+                <div class="gallery-item" data-category="windows">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🪟</div>
+                        <div class="placeholder-text">Window Cleaning<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Crystal Clear Windows</h3>
+                        <p class="gallery-description">Professional window cleaning with streak-free results</p>
+                        <span class="gallery-tag">Window Cleaning</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 12 -->
+                <div class="gallery-item" data-category="cars">
+                    <div class="gallery-image-placeholder">
+                        <div class="placeholder-icon">🚗</div>
+                        <div class="placeholder-text">Car Cleaning<br>Project</div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Complete Car Valet</h3>
+                        <p class="gallery-description">Interior and exterior car cleaning service</p>
+                        <span class="gallery-tag">Car Cleaning</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Before & After Transformations</h2>
+                <p class="section-subtitle">See the dramatic difference our services make</p>
+            </div>
+            <div class="before-after-grid">
+                
+                <!-- Before/After 1 -->
+                <div class="before-after-card">
+                    <div class="before-after-images">
+                        <div class="before-after-item">
+                            <div class="ba-placeholder before">
+                                <div class="ba-label">BEFORE</div>
+                                <div class="ba-icon">😔</div>
+                                <div class="ba-text">Overgrown<br>Garden</div>
+                            </div>
+                        </div>
+                        <div class="before-after-arrow">→</div>
+                        <div class="before-after-item">
+                            <div class="ba-placeholder after">
+                                <div class="ba-label">AFTER</div>
+                                <div class="ba-icon">✨</div>
+                                <div class="ba-text">Beautiful<br>Space</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="before-after-title">Complete Garden Clearance</h3>
+                    <p class="before-after-description">Transformed from overgrown mess to usable outdoor space</p>
+                </div>
+
+                <!-- Before/After 2 -->
+                <div class="before-after-card">
+                    <div class="before-after-images">
+                        <div class="before-after-item">
+                            <div class="ba-placeholder before">
+                                <div class="ba-label">BEFORE</div>
+                                <div class="ba-icon">🌫️</div>
+                                <div class="ba-text">Dirty<br>Patio</div>
+                            </div>
+                        </div>
+                        <div class="before-after-arrow">→</div>
+                        <div class="before-after-item">
+                            <div class="ba-placeholder after">
+                                <div class="ba-label">AFTER</div>
+                                <div class="ba-icon">✨</div>
+                                <div class="ba-text">Pristine<br>Surface</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="before-after-title">Pressure Washing Magic</h3>
+                    <p class="before-after-description">Years of dirt and algae removed to reveal original beauty</p>
+                </div>
+
+                <!-- Before/After 3 -->
+                <div class="before-after-card">
+                    <div class="before-after-images">
+                        <div class="before-after-item">
+                            <div class="ba-placeholder before">
+                                <div class="ba-label">BEFORE</div>
+                                <div class="ba-icon">🌿</div>
+                                <div class="ba-text">Wild<br>Hedges</div>
+                            </div>
+                        </div>
+                        <div class="before-after-arrow">→</div>
+                        <div class="before-after-item">
+                            <div class="ba-placeholder after">
+                                <div class="ba-label">AFTER</div>
+                                <div class="ba-icon">✨</div>
+                                <div class="ba-text">Neat<br>Boundary</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="before-after-title">Hedge Restoration</h3>
+                    <p class="before-after-description">Unruly hedges shaped into pristine garden boundaries</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Want Results Like These?</h2>
+                <p class="cta-text">Let us transform your outdoor space with our professional services</p>
+                <a href="quote.html" class="btn btn-light">Get Your Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">County Cutters</h3>
+                    <p class="footer-text">Local landscaping & garden care across Norfolk and Suffolk. Quality landscaping you can trust. Contact us anytime.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            07553 454428
+                        </li>
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            countycutters07@gmail.com
+                        </li>
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Hickling, Norfolk
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 County Cutters. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMobile = document.querySelector('.nav-mobile');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navMobile.classList.remove('active');
+            });
+        });
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Gallery Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all') {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        if (item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

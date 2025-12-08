@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote - County Cutters</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Quote Form Styles */
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quote-form-wrapper {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-gray-100);
+        }
+
+        .form-section {
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--color-gray-100);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .form-section-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: var(--font-weight-bold);
+            font-size: 1.125rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            font-size: 0.9375rem;
+        }
+
+        .form-label .required {
+            color: var(--color-primary);
+        }
+
+        .form-hint {
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+            margin-top: -0.25rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-gray-900);
+            transition: all var(--transition-fast);
+            background: var(--color-white);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        @media (min-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Service Selection */
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        @media (min-width: 640px) {
+            .service-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .service-option {
+            position: relative;
+        }
+
+        .service-checkbox {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .service-label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background: var(--color-white);
+        }
+
+        .service-label:hover {
+            border-color: var(--color-primary-light);
+            background: var(--color-gray-50);
+        }
+
+        .service-checkbox:checked + .service-label {
+            border-color: var(--color-primary);
+            background: var(--color-primary-ultra-light);
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .service-text {
+            flex: 1;
+        }
+
+        .service-name {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            display: block;
+            margin-bottom: 0.125rem;
+        }
+
+        .service-description {
+            font-size: 0.8125rem;
+            color: var(--color-gray-600);
+        }
+
+        /* Property Type Radio Buttons */
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        @media (min-width: 640px) {
+            .radio-group {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background: var(--color-white);
+            text-align: center;
+            min-height: 100px;
+        }
+
+        .radio-label:hover {
+            border-color: var(--color-primary-light);
+            background: var(--color-gray-50);
+        }
+
+        .radio-input:checked + .radio-label {
+            border-color: var(--color-primary);
+            background: var(--color-primary-ultra-light);
+        }
+
+        .radio-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .radio-text {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+        }
+
+        /* Frequency Options */
+        .frequency-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        @media (min-width: 640px) {
+            .frequency-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .frequency-options {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.25rem 2rem;
+            font-size: 1.125rem;
+            font-weight: var(--font-weight-semibold);
+            border-radius: var(--radius-lg);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: 30px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: var(--spacing-lg);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: var(--radius-xl);
+            color: var(--color-white);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .success-title {
+            font-size: 1.75rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .success-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--color-primary-ultra-light);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-box-title {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .info-box-text {
+            color: var(--color-gray-700);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            background: #fee;
+            border-left: 4px solid #c00;
+            color: #c00;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+        /* Reviews Container */
+.reviews-container {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-gray-100);
+}
+
+/* Heading */
+.reviews-container h1 {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-900);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.reviews-container .subtitle {
+    font-size: 1rem;
+    color: var(--color-gray-600);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Review Form */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: 30px;
+}
+
+.review-form label {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-900);
+    font-size: 0.9375rem;
+}
+
+.review-form input[type="text"],
+.review-form select,
+.review-form textarea {
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-gray-900);
+    transition: all var(--transition-fast);
+    background: var(--color-white);
+}
+
+.review-form input[type="text"]:focus,
+.review-form select:focus,
+.review-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.review-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Submit Button */
+.review-form .btn-submit {
+    width: 200px;
+    align-self: flex-start;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-lg);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+}
+
+.review-form .btn-submit:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Reviews List */
+.reviews-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+.review-card {
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.review-stars {
+    color: #FFD700; /* Gold stars */
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.review-name {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-900);
+    margin-bottom: 8px;
+}
+
+.review-card p {
+    color: var(--color-gray-700);
+    line-height: 1.5;
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+     <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                    <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181.96 181.96" class="logo-icon">
+        <defs>
+            <style>
+                .cls-1 { fill: #fff; font-family: RextonRegularRegular, 'Rexton Regular'; font-size: 100px; }
+                .cls-2 { fill: #00a651; font-family: RextonRegularRegular, 'Rexton Regular'; font-size: 100px; }
+                .cls-3 { fill: #f9ed32; }
+            </style>
+        </defs>
+        <g>
+            <circle class="cls-3" cx="90.98" cy="90.98" r="90.98"/>
+            <text class="cls-2" transform="translate(40.3 127.6)">C</text>
+            <text class="cls-1" transform="translate(29.46 127.8)">C</text>
+        </g>
+    </svg>
+    <span class="logo-text">County Cutters</span>
+</div>
+
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="quote.html" class="nav-link " >Quotes</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="reviews.html" class="nav-link active">Leave a Review</a>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile">
+                <a href="index.html" class="nav-link-mobile">Home</a>
+                <a href="services.html" class="nav-link-mobile">Services</a>
+                <a href="gallery.html" class="nav-link-mobile">Gallery</a>
+                <a href="quote.html" class="nav-link-mobile ">Quotes</a>
+                <a href="about.html" class="nav-link-mobile">About Us</a>
+                <a href="contact.html" class="nav-link-mobile">Contact</a>
+                <a href="reviews.html" class="nav-link active">Leave a Review</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Leave us a Review</h1>
+                <p class="page-subtitle">Give us some feedback to help improve our services or explain what went well.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="quote-container">
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h3 class="success-title">Review Received!</h3>
+                    <p class="success-text">Thank you for your review. We greatly appreciate the feedback which helps us to provide the best service possible.</p>
+                </div>
+
+                <!-- Error Message -->
+                <div class="error-message" id="errorMessage"></div>
+
+                <!-- Info Box -->
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        Quick & Easy Process
+                    </div>
+                    <p class="info-box-text">
+                        Complete this form to share your experience with County Cutters. Your feedback helps us improve our services and lets others know what to expect. We appreciate your honest review!
+                    </p>
+                </div>
+
+                
+    <!-- Section Heading -->
+    <h1>Customer Reviews</h1>
+    <p class="subtitle">We value your feedback! Please take a moment to share your experience with County Cutters.</p>
+
+    <!-- Review Form -->
+    <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="da686ae6-d4d9-411a-988b-75b3e61c5b57">
+
+        <!-- Web3Forms spam protection -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+        <!-- Email Subject -->
+        <input type="hidden" name="subject" value="Review from County Cutters">
+        <input type="hidden" name="from_name" value="County Cutters Website">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Your Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" class="form-input" required>
+        </div>
+
+        <!-- Rating -->
+        <div class="form-group">
+            <label for="rating">Your Rating <span class="required">*</span></label>
+            <select id="rating" name="rating" class="form-select" required>
+                <option value="">Select...</option>
+                <option>★★★★★ (5 stars)</option>
+                <option>★★★★☆ (4 stars)</option>
+                <option>★★★☆☆ (3 stars)</option>
+                <option>★★☆☆☆ (2 stars)</option>
+                <option>★☆☆☆☆ (1 star)</option>
+            </select>
+        </div>
+
+        <!-- Review -->
+        <div class="form-group">
+            <label for="review">Your Review <span class="required">*</span></label>
+            <textarea id="review" name="review" class="form-textarea" rows="5" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="btnText">Submit Review</span>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </form>
+
+    <!-- Example Reviews List -->
+    <div class="reviews-list">
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-name">Sarah M.</div>
+            <p>Great service, garden looks amazing! Will definitely use again.</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-name">Jamie L.</div>
+            <p>Fast, friendly and professional. Perfect lawn cut and hedge trim.</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★☆</div>
+            <div class="review-name">Alex R.</div>
+            <p>Very pleased with the service, arrived on time and did a good job.</p>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">County Cutters</h3>
+                    <p class="footer-text">Local landscaping & garden care across Norfolk and Suffolk. Quality landscaping you can trust. Contact us anytime.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            07553 454428
+                        </li>
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            countycutters07@gmail.com
+                        </li>
+                        <li>
+                            <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Hickling, Norfolk
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 County Cutters. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const form = document.getElementById('quoteForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            
+            // Hide any previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+
+            try {
+                const formData = new FormData(form);
+                const object = {};
+                formData.forEach((value, key) => {
+                    if (object[key]) {
+                        if (!Array.isArray(object[key])) {
+                            object[key] = [object[key]];
+                        }
+                        object[key].push(value);
+                    } else {
+                        object[key] = value;
+                    }
+                });
+                const json = JSON.stringify(object);
+                
+                // Submit to Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Reset button
+                    btnText.textContent = 'Submit Review';
+                    submitBtn.disabled = false;
+                } else {
+                    throw new Error(result.message || 'Form submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                errorMessage.textContent = 'Sorry, there was a problem submitting your request. Please try again or contact us directly.';
+                errorMessage.classList.add('show');
+                
+                // Reset button
+                btnText.textContent = 'Submit Review';
+                submitBtn.disabled = false;
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
+</body>
+</html>
